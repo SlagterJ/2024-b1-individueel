@@ -1,4 +1,5 @@
 global using LanguageExt;
+using _2024_b1_individueel.Data;
 
 namespace _2024_b1_individueel;
 
@@ -10,6 +11,8 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddDbContext<GuessTheFlagDatabaseContext>();
+        builder.Services.AddRouting((options) => options.LowercaseUrls = true);
 
         var app = builder.Build();
 
