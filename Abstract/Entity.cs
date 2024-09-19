@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace _2024_b1_individueel.Abstract;
 
@@ -11,5 +12,6 @@ public abstract class Entity
     /// Unique identifier for this entity.
     /// </summary>
     [Key]
-    public readonly string Identifier = Guid.NewGuid().ToString("N");
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public Guid Identifier { get; set; }
 }
