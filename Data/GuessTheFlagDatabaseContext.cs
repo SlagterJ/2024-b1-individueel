@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using _2024_b1_individueel.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace _2024_b1_individueel.Data;
 
@@ -7,6 +8,8 @@ namespace _2024_b1_individueel.Data;
 /// </summary>
 public class GuessTheFlagDatabaseContext : DbContext
 {
+    public DbSet<Flag> FlagSet { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         string connection =
