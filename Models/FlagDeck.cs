@@ -28,7 +28,7 @@ public class FlagDeck(List<Flag> flags) : Entity
             count--;
             var firstSpot = count;
             var secondSpot = random.Next(0, count + 1);
-            var flagToSwap = flags[firstSpot];
+            var flagToSwap = flags[firstSpot]!;
             flags[firstSpot] = flags[secondSpot];
             flags[secondSpot] = flagToSwap;
         }
