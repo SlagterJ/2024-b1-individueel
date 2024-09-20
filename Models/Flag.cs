@@ -1,17 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using _2024_b1_individueel.Abstract;
+﻿using _2024_b1_individueel.Abstract;
 
 namespace _2024_b1_individueel.Models;
 
 /// <summary>
 /// Represents a country's flag.
 /// </summary>
-/// <param name="countryCode">The country code. Check its validity using https://flagcdn.com/</param>
+/// <param name="countryCode">The country code. Check its validity using https://flagcdn.com/.</param>
 /// <param name="correctAnswers">The correct answers to this flag.</param>
 public class Flag(string countryCode, List<string> correctAnswers) : Entity
 {
     /// <summary>
-    /// Country code for this flag, also used to generate the svg url.
+    /// Country code for this flag, also used to generate the SVG URL.
     /// </summary>
     public string CountryCode { get; set; } = countryCode;
 
