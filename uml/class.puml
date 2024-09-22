@@ -1,0 +1,42 @@
+@startuml class
+
+abstract class Entity {
+  + Guid Identifier
+}
+
+class Flag {
+  + string CountryCode
+  + List<string> CorrectAnswers
+
+  + bool IsCorrectAnswer()
+}
+
+class FlagDeck {
+  + List<Flag> Flags
+
+  + FlagDeck Shuffle()
+}
+
+class User {
+  + string Firstname
+  + string Surname
+}
+
+class Pupil {
+  + List<string> Scores
+}
+
+class Tutor {
+  + List<string> Pupils
+}
+
+Entity <|-- Flag
+Entity <|-- FlagDeck
+Entity <|-- User
+User <|-- Pupil
+User <|-- Tutor
+
+FlagDeck --> Flag : 1:n
+Tutor --> Pupil : 1:n
+
+@enduml

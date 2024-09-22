@@ -1,0 +1,25 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8">
+  <diagram name="Page-1" id="y1gwMwk3XRSc3kJ45X5R">
+    <mxGraphModel dx="2206" dy="1360" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zDWVDdGhYQThYKmpTkUo-1" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="240" y="350" width="370" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="zDWVDdGhYQThYKmpTkUo-2" value="Beve&lt;span style=&quot;background-color: initial;&quot;&gt;stig&lt;/span&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.buttons.button;strokeColor=#666666;fontColor=#ffffff;mainText=;buttonStyle=round;fontSize=17;fontStyle=1;fillColor=#CCCCCC;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="350" y="690" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="zDWVDdGhYQThYKmpTkUo-3" value="&lt;font color=&quot;#000000&quot;&gt;Overslaan&lt;/font&gt;" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.buttons.button;strokeColor=#666666;fontColor=#ffffff;mainText=;buttonStyle=round;fontSize=17;fontStyle=1;fillColor=#FFFFFF;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="365" y="750" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zDWVDdGhYQThYKmpTkUo-4" value="" style="strokeWidth=1;shadow=0;dashed=0;align=center;html=1;shape=mxgraph.mockup.forms.pwField;strokeColor=#999999;mainText=;align=left;fontColor=#666666;fontSize=17;spacingLeft=3;" vertex="1" parent="1">
+          <mxGeometry x="325" y="620" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="zDWVDdGhYQThYKmpTkUo-5" value="Land" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="395" y="590" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

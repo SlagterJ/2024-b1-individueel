@@ -13,10 +13,10 @@ public class FlagDeck(List<Flag> flags) : Entity
     public List<Flag> Flags { get; set; } = flags;
 
     /// <summary>
-    /// Shuffles the flags of the current object.
+    /// Shuffles the flags, returns a new FlagDeck with shuffled flags.
     /// </summary>
     /// <returns>A list of shuffled flags.</returns>
-    public List<Flag> Shuffle()
+    public FlagDeck Shuffle()
     {
         var random = new Random();
         var flags = Flags;
@@ -33,6 +33,6 @@ public class FlagDeck(List<Flag> flags) : Entity
             flags[secondSpot] = flagToSwap;
         }
 
-        return flags;
+        return new FlagDeck(flags);
     }
 }

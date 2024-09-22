@@ -1,0 +1,22 @@
+@startuml use_case
+left to right direction
+
+actor "Leerling" as l
+actor "Docent" as d
+
+rectangle "GuessTheFlag-systeem" {
+  usecase "UC1: Doorloopt quiz" as uc1
+  usecase "UC2: Appendeert ranglijst" as uc2
+  usecase "UC3: Overziet scores" as uc3
+  usecase "UC4: Schrijft toets" as uc4
+  usecase "UC5: Overziet ranglijst" as uc5
+}
+
+l -- uc1
+l -- uc5
+uc1 <.. uc2 : <<extends>>
+d -- uc3
+d -- uc4
+
+
+@enduml
