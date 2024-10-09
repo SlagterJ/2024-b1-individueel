@@ -5,21 +5,22 @@ namespace _2024_b1_individueel.Models;
 /// <summary>
 /// Represents a deck of flags, 1:n of flags.
 /// </summary>
-public class FlagDeck(List<Flag> flags) : Entity
+public class FlagDeck : Entity
 {
     /// <summary>
     /// The 1:n flags in this deck.
     /// </summary>
-    public List<Flag> Flags { get; set; } = flags;
+    public required Queue<Flag> Flags { get; set; }
 
     /// <summary>
     /// Shuffles the flags, returns a new FlagDeck with shuffled flags.
     /// </summary>
-    /// <returns>A list of shuffled flags.</returns>
+    /// <returns>A new FlagDeck with shuffled flags.</returns>
     public FlagDeck Shuffle()
     {
+        // TODO: make this method use immutable values
         var random = new Random();
-        var flags = Flags;
+        var flags = Flags.ToList();
 
         var count = flags.Count;
 
@@ -33,6 +34,6 @@ public class FlagDeck(List<Flag> flags) : Entity
             flags[secondSpot] = flagToSwap;
         }
 
-        return new FlagDeck(flags);
+        return new FlagDeck() { Flags = new Queue<Flag>(flags) };
     }
 }

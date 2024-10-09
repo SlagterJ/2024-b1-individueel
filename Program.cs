@@ -13,6 +13,16 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<GuessTheFlagDatabaseContext>();
         builder.Services.AddRouting((options) => options.LowercaseUrls = true);
+
+        // configure sessions
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+
+        // Fix for infinite cycle on n:n relations
         builder
             .Services.AddControllers()
             .AddJsonOptions(options =>
@@ -41,6 +51,8 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
+
+        app.UseSession();
 
         app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
