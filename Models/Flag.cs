@@ -18,11 +18,6 @@ public class Flag : Entity
     public required List<string> CorrectAnswers { get; set; }
 
     /// <summary>
-    /// The deck this flag is a part of.
-    /// </summary>
-    public FlagDeck? InDeck { get; set; }
-
-    /// <summary>
     /// The URL for the SVG file of this flag (from flagcdn.com).
     /// </summary>
     public string ImageURL => $"https://flagcdn.com/{CountryCode}.svg";
