@@ -13,9 +13,14 @@ public class FlagDeck : Entity
     public required string Name { get; set; }
 
     /// <summary>
-    /// The 1:n flags in this deck.
+    /// The 0:n flags in this deck.
     /// </summary>
-    public required Queue<Flag> Flags { get; set; } = new();
+    public Queue<Flag> Flags { get; set; } = new();
+
+    /// <summary>
+    /// The scores pupils have obtained with this deck.
+    /// </summary>
+    public List<Score> Scores { get; set; } = [];
 
     /// <summary>
     /// Shuffles the flags, returns a new FlagDeck with shuffled flags.

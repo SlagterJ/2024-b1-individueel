@@ -10,7 +10,9 @@ public class GuessTheFlagDatabaseContext : DbContext
 {
     public DbSet<Flag> FlagSet { get; set; }
     public DbSet<FlagDeck> FlagDeckSet { get; set; }
-    public DbSet<User> UserSet { get; set; }
+    public DbSet<Tutor> TutorSet { get; set; }
+    public DbSet<Pupil> PupilSet { get; set; }
+    public DbSet<Score> ScoreSet { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

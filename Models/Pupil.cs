@@ -1,9 +1,11 @@
-﻿namespace _2024_b1_individueel.Models;
+﻿using _2024_b1_individueel.Abstract;
+
+namespace _2024_b1_individueel.Models;
 
 /// <summary>
 /// Represents a pupil that has a tutor.
 /// </summary>
-public class Pupil
+public class Pupil : User
 {
     /// <summary>
     /// This pupil's tutor.
@@ -13,5 +15,5 @@ public class Pupil
     /// <summary>
     /// The scores achieved by this pupil.
     /// </summary>
-    public required List<Score> Scores { get; set; } = [];
+    public List<Score> Scores { get; set; } = [];
 }
