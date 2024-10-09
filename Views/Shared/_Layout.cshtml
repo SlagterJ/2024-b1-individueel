@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - _2024_b1_individueel</title>
+    <title>@ViewData["Title"] - Guess The Flag!</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/_2024_b1_individueel.styles.css" asp-append-version="true" />
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">_2024_b1_individueel</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Guess The Flag!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,10 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Flags">Beheer vlaggen</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Flags" asp-action="Index">Beheer vlaggen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FlagDecks" asp-action="Index">Beheer vlagspellen</a>
                         </li>
                     </ul>
                 </div>
@@ -38,7 +41,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - _2024_b1_individueel - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            Guess The Flag! - Jordy Slagter - Zuyd Hogeschool
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

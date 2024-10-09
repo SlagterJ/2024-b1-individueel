@@ -8,9 +8,14 @@ namespace _2024_b1_individueel.Models;
 public class FlagDeck : Entity
 {
     /// <summary>
+    /// Name of this FlagDeck.
+    /// </summary>
+    public required string Name { get; set; }
+
+    /// <summary>
     /// The 1:n flags in this deck.
     /// </summary>
-    public required Queue<Flag> Flags { get; set; }
+    public required Queue<Flag> Flags { get; set; } = new();
 
     /// <summary>
     /// Shuffles the flags, returns a new FlagDeck with shuffled flags.
@@ -34,6 +39,6 @@ public class FlagDeck : Entity
             flags[secondSpot] = flagToSwap;
         }
 
-        return new FlagDeck() { Flags = new Queue<Flag>(flags) };
+        return new FlagDeck() { Name = this.Name, Flags = new Queue<Flag>(flags) };
     }
 }

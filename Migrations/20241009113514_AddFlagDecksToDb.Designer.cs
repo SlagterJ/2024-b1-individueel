@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2024_b1_individueel.Data;
 
@@ -11,9 +12,11 @@ using _2024_b1_individueel.Data;
 namespace _2024_b1_individueel.Migrations
 {
     [DbContext(typeof(GuessTheFlagDatabaseContext))]
-    partial class GuessTheFlagDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241009113514_AddFlagDecksToDb")]
+    partial class AddFlagDecksToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,10 +54,6 @@ namespace _2024_b1_individueel.Migrations
                     b.Property<Guid>("Identifier")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Identifier");
 

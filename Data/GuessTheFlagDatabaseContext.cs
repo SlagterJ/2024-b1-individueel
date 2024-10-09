@@ -9,6 +9,8 @@ namespace _2024_b1_individueel.Data;
 public class GuessTheFlagDatabaseContext : DbContext
 {
     public DbSet<Flag> FlagSet { get; set; }
+    public DbSet<FlagDeck> FlagDeckSet { get; set; }
+    public DbSet<User> UserSet { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

@@ -3,10 +3,8 @@
 namespace _2024_b1_individueel.Models;
 
 /// <summary>
-/// Represents a country's flag.
+/// Represents a country's or institution's flag.
 /// </summary>
-/// <param name="countryCode">The country code. Check its validity using https://flagcdn.com/.</param>
-/// <param name="correctAnswers">The correct answers to this flag.</param>
 public class Flag : Entity
 {
     /// <summary>
@@ -18,6 +16,11 @@ public class Flag : Entity
     /// A list of correct answers for this flag.
     /// </summary>
     public required List<string> CorrectAnswers { get; set; }
+
+    /// <summary>
+    /// The deck this flag is a part of.
+    /// </summary>
+    public FlagDeck? InDeck { get; set; }
 
     /// <summary>
     /// The URL for the SVG file of this flag (from flagcdn.com).
