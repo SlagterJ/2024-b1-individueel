@@ -1,10 +1,12 @@
 ﻿using _2024_b1_individueel.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace _2024_b1_individueel.Models;
 
 /// <summary>
-/// Represents a deck of flags, 1:n of flags.
+/// Represents a deck of flags, 0:n of flags.
 /// </summary>
+[Index(nameof(Name), IsUnique = true)]
 public class FlagDeck : Entity
 {
     /// <summary>
@@ -15,12 +17,12 @@ public class FlagDeck : Entity
     /// <summary>
     /// The 0:n flags in this deck.
     /// </summary>
-    public Queue<Flag> Flags { get; set; } = new();
+    public ICollection<Flag> Flags { get; set; } = [];
 
     /// <summary>
     /// The scores pupils have obtained with this deck.
     /// </summary>
-    public List<Score> Scores { get; set; } = [];
+    public ICollection<Score> Scores { get; set; } = [];
 
     /// <summary>
     /// Shuffles the flags, returns a new FlagDeck with shuffled flags.
@@ -44,6 +46,6 @@ public class FlagDeck : Entity
             flags[secondSpot] = flagToSwap;
         }
 
-        return new FlagDeck() { Name = this.Name, Flags = new Queue<Flag>(flags) };
+        return new FlagDeck() { Name = this.Name, Flags = flags };
     }
 }

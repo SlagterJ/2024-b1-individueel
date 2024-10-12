@@ -15,5 +15,5 @@ public class Pupil : User
     /// <summary>
     /// The scores achieved by this pupil.
     /// </summary>
-    public List<Score> Scores { get; set; } = [];
+    public ICollection<Score> Scores { get; set; } = [];
 }

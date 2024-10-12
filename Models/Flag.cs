@@ -1,10 +1,12 @@
 ﻿using _2024_b1_individueel.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace _2024_b1_individueel.Models;
 
 /// <summary>
 /// Represents a country's or institution's flag.
 /// </summary>
+[Index(nameof(CountryCode), IsUnique = true)]
 public class Flag : Entity
 {
     /// <summary>
@@ -15,7 +17,12 @@ public class Flag : Entity
     /// <summary>
     /// A list of correct answers for this flag.
     /// </summary>
-    public required List<string> CorrectAnswers { get; set; }
+    public required string CorrectAnswer { get; set; }
+
+    /// <summary>
+    /// The flagdeck to which this flag belongs.
+    /// </summary>
+    public required FlagDeck FlagDeck { get; set; }
 
     /// <summary>
     /// The URL for the SVG file of this flag (from flagcdn.com).

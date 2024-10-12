@@ -10,5 +10,5 @@ public class Tutor : User
     /// <summary>
     /// The 0:n relationship of pupils.
     /// </summary>
-    public List<Pupil> Pupils { get; set; } = [];
+    public ICollection<Pupil> Pupils { get; set; } = [];
 }

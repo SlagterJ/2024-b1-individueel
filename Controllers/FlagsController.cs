@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using _2024_b1_individueel.Data;
 using _2024_b1_individueel.Models;
+using _2024_b1_individueel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,21 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Flags/Create
-    public IActionResult Create() => View();
+    public IActionResult Create()
+    {
+        var flagDecks = context.FlagDeckSet.ToList();
+        var flagCreateEditViewModel = new FlagCreateEditViewModel()
+        {
+            FlagDecks = context
+                .FlagDeckSet.Select(flagDeck => new SelectListItem
+                {
+                    Value = flagDeck.Identifier.ToString(),
+                    Text = flagDeck.Name,
+                })
+                .ToList(),
+        };
+        return View(flagCreateEditViewModel);
+    }
 
     // POST: Flags/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -37,18 +52,32 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(
-        [Bind("CountryCode,CorrectAnswers,Identifier")] Flag flag
+        [Bind("CountryCode,CorrectAnswer,FlagDeckIdentifier,Identifier")]
+            FlagCreateEditViewModel flagCreateEditViewModel
     )
     {
         if (ModelState.IsValid)
         {
-            flag.Identifier = Guid.NewGuid();
+            var flagDeck = await context.FlagDeckSet.FirstOrDefaultAsync(
+                (flagDeck) => flagDeck.Identifier == flagCreateEditViewModel.FlagDeckIdentifier
+            );
+
+            if (flagDeck == null)
+                return NotFound();
+
+            var flag = new Flag()
+            {
+                CountryCode = flagCreateEditViewModel.CountryCode!,
+                CorrectAnswer = flagCreateEditViewModel.CorrectAnswer!,
+                Identifier = Guid.NewGuid(),
+                FlagDeck = flagDeck,
+            };
             context.Add(flag);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        return View(flag);
+        return View(flagCreateEditViewModel);
     }
 
     // GET: Flags/Edit/5

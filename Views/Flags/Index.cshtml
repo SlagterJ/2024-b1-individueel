@@ -16,7 +16,7 @@
                 @Html.DisplayNameFor(model => model.CountryCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CorrectAnswers)
+                @Html.DisplayNameFor(model => model.CorrectAnswer)
             </th>
             <th></th>
         </tr>
@@ -28,7 +28,7 @@
                 @Html.DisplayFor(modelItem => item.CountryCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CorrectAnswers)
+                @Html.DisplayFor(modelItem => item.CorrectAnswer)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Identifier">Edit</a> |
