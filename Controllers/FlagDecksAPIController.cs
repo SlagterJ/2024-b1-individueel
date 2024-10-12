@@ -21,9 +21,11 @@ public class FlagDecksAPIController(GuessTheFlagDatabaseContext context) : Contr
 
     // GET: api/FlagDecksAPI/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<FlagDeck>> GetFlagDeck(Guid id)
+    public ActionResult<FlagDeck> GetFlagDeck(Guid id)
     {
-        var flagDeck = await context.FlagDeckSet.FindAsync(id);
+        var flagDeck = context
+            .FlagDeckSet.Include((model) => model.Flags)
+            .FirstOrDefault((model) => model.Identifier == id);
 
         if (flagDeck == null)
             return NotFound();

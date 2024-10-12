@@ -10,7 +10,7 @@ public class Score : Entity
     /// <summary>
     /// The pupil that achieved this score.
     /// </summary>
-    public required Pupil AchievedBy { get; set; }
+    public required string AchievedBy { get; set; }
 
     /// <summary>
     /// The score that this pupil achieved.
