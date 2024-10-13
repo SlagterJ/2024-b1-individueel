@@ -1,25 +1,29 @@
 @startuml class
 
 abstract class Entity {
-  + Guid Identifier
+  + int Identifier
 }
 
 class Flag {
   + string CountryCode
   + string CorrectAnswer
 
+  + int FlagDeckIdentifier
+  + FlagDeck FlagDeck
+
   + bool IsCorrectAnswer()
 }
 
 class FlagDeck {
+  + string Name
   + List<Flag> Flags
-
   + FlagDeck Shuffle()
 }
 
 class Score {
   + string AchievedBy
   + int AchievedScore
+  + int FlagDeckIdentifier
   + FlagDeck FlagDeck
 }
 
