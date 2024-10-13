@@ -40,7 +40,8 @@ const askQuestion = () => {
 
     if (flags.length <= 0) {
         $("#section-quiz").addClass("hidden");
-        $("section-end").removeClass("hidden");
+        $("#section-end").removeClass("hidden");
+        $("#result-text").text(`Je score is ${(score / total) * 10}!`);
         return;
     }
     if (total === 0) total = flags.length;
@@ -70,6 +71,24 @@ const skipQuestion = () => {
     setTimeout(() => {
         askQuestion();
     }, 1000);
+}
+
+const postScore = () => {
+    const achievedByName = $("#achievedByName").val();
+
+    const data = {
+        achievedByName,
+        scoreNumber: score,
+    };
+
+    fetch(`https://${hostName}:${port}/api/flagDecks/${flagDeckIdentifier}`, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(data)
+    }).then(res => {
+        console.log("Request complete! response:", res);
+        window.location.href = "/FlagDecks/Choose";
+    });
 }
 
 

@@ -15,6 +15,8 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     // GET: FlagDecks
     public async Task<IActionResult> Index() => View(await context.FlagDeckSet.ToListAsync());
 
+    public async Task<IActionResult> Choose() => View(await context.FlagDeckSet.ToListAsync());
+
     // GET: FlagDecks/Details/5
     public async Task<IActionResult> Details(Guid? id)
     {

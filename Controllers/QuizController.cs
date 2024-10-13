@@ -1,16 +1,20 @@
-﻿using _2024_b1_individueel.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using _2024_b1_individueel.Data;
+using _2024_b1_individueel.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace _2024_b1_individueel.Controllers;
 
 public class QuizController(GuessTheFlagDatabaseContext context) : Controller
 {
-    public IActionResult Index() => View();
-
     // this is, for some reason, required
     [Route("quiz/{identifier?}")]
-    public async Task<IActionResult> Quiz(Guid? identifier)
+    public async Task<IActionResult> Index(Guid? identifier)
     {
         if (identifier == null)
             return View("Index");
@@ -21,6 +25,6 @@ public class QuizController(GuessTheFlagDatabaseContext context) : Controller
         if (flagDeck == null)
             return NotFound();
 
-        return View("Quiz", flagDeck.Shuffle());
+        return View("Index", flagDeck.Shuffle());
     }
 }

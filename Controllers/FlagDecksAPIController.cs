@@ -33,54 +33,33 @@ public class FlagDecksAPIController(GuessTheFlagDatabaseContext context) : Contr
         return flagDeck;
     }
 
-    // PUT: api/FlagDecksAPI/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutFlagDeck(Guid id, FlagDeck flagDeck)
+    public readonly struct ScorePost
     {
-        if (id != flagDeck.Identifier)
-            return BadRequest();
-
-        context.Entry(flagDeck).State = EntityState.Modified;
-
-        try
-        {
-            await context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!FlagDeckExists(id))
-                return NotFound();
-            else
-                throw;
-        }
-
-        return NoContent();
+        public string AchievedByName { get; init; }
+        public int ScoreNumber { get; init; }
     }
 
-    // POST: api/FlagDecksAPI
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost]
-    public async Task<ActionResult<FlagDeck>> PostFlagDeck(FlagDeck flagDeck)
+    [HttpPost("{identifier}")]
+    public ActionResult<Score> PostScore(Guid identifier, ScorePost scorePost)
     {
-        context.FlagDeckSet.Add(flagDeck);
-        await context.SaveChangesAsync();
+        var flagDeck = context
+            .FlagDeckSet.Include((model) => model.Flags)
+            .FirstOrDefault((model) => model.Identifier == identifier);
 
-        return CreatedAtAction("GetFlagDeck", new { id = flagDeck.Identifier }, flagDeck);
-    }
-
-    // DELETE: api/FlagDecksAPI/5
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteFlagDeck(Guid id)
-    {
-        var flagDeck = await context.FlagDeckSet.FindAsync(id);
         if (flagDeck == null)
             return NotFound();
 
-        context.FlagDeckSet.Remove(flagDeck);
-        await context.SaveChangesAsync();
+        var score = new Score()
+        {
+            AchievedBy = scorePost.AchievedByName != "" ? scorePost.AchievedByName : "Anoniem",
+            AchievedScore = scorePost.ScoreNumber,
+            FlagDeck = flagDeck,
+        };
 
-        return NoContent();
+        context.ScoreSet.Add(score);
+        context.SaveChanges();
+
+        return score;
     }
 
     private bool FlagDeckExists(Guid id) => context.FlagDeckSet.Any(e => e.Identifier == id);

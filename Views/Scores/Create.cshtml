@@ -1,0 +1,38 @@
+﻿@model _2024_b1_individueel.Models.Score
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Score</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AchievedBy" class="control-label"></label>
+                <input asp-for="AchievedBy" class="form-control" />
+                <span asp-validation-for="AchievedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AchievedScore" class="control-label"></label>
+                <input asp-for="AchievedScore" class="form-control" />
+                <span asp-validation-for="AchievedScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
