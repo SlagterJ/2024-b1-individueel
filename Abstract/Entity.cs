@@ -13,5 +13,5 @@ public abstract class Entity
     /// </summary>
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid Identifier { get; set; }
+    public int Identifier { get; set; }
 }

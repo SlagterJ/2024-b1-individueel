@@ -21,7 +21,7 @@ public class FlagsAPIController(GuessTheFlagDatabaseContext context) : Controlle
 
     // GET: api/FlagsAPI/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Flag>> GetFlag(Guid id)
+    public async Task<ActionResult<Flag>> GetFlag(int id)
     {
         var flag = await context.FlagSet.FindAsync(id);
 
@@ -34,7 +34,7 @@ public class FlagsAPIController(GuessTheFlagDatabaseContext context) : Controlle
     // PUT: api/FlagsAPI/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutFlag(Guid id, Flag flag)
+    public async Task<IActionResult> PutFlag(int id, Flag flag)
     {
         if (id != flag.Identifier)
             return BadRequest();
@@ -69,7 +69,7 @@ public class FlagsAPIController(GuessTheFlagDatabaseContext context) : Controlle
 
     // DELETE: api/FlagsAPI/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteFlag(Guid id)
+    public async Task<IActionResult> DeleteFlag(int id)
     {
         var flag = await context.FlagSet.FindAsync(id);
         if (flag == null)
@@ -81,5 +81,5 @@ public class FlagsAPIController(GuessTheFlagDatabaseContext context) : Controlle
         return NoContent();
     }
 
-    private bool FlagExists(Guid id) => context.FlagSet.Any(e => e.Identifier == id);
+    private bool FlagExists(int id) => context.FlagSet.Any(e => e.Identifier == id);
 }

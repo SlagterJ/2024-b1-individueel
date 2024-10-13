@@ -23,7 +23,7 @@ public class ScoresAPIController(GuessTheFlagDatabaseContext context) : Controll
 
     // GET: api/ScoresAPI/5
     [HttpGet("{id}")]
-    public async Task<ActionResult<Score>> GetScore(Guid id)
+    public async Task<ActionResult<Score>> GetScore(int id)
     {
         var score = await context.ScoreSet.FindAsync(id);
 
@@ -38,7 +38,7 @@ public class ScoresAPIController(GuessTheFlagDatabaseContext context) : Controll
     // PUT: api/ScoresAPI/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutScore(Guid id, Score score)
+    public async Task<IActionResult> PutScore(int id, Score score)
     {
         if (id != score.Identifier)
         {
@@ -79,7 +79,7 @@ public class ScoresAPIController(GuessTheFlagDatabaseContext context) : Controll
 
     // DELETE: api/ScoresAPI/5
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteScore(Guid id)
+    public async Task<IActionResult> DeleteScore(int id)
     {
         var score = await context.ScoreSet.FindAsync(id);
         if (score == null)
@@ -93,7 +93,7 @@ public class ScoresAPIController(GuessTheFlagDatabaseContext context) : Controll
         return NoContent();
     }
 
-    private bool ScoreExists(Guid id)
+    private bool ScoreExists(int id)
     {
         return context.ScoreSet.Any(e => e.Identifier == id);
     }

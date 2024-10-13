@@ -7,6 +7,6 @@ public class FlagCreateEditViewModel
 {
     public string? CountryCode { get; set; }
     public string? CorrectAnswer { get; set; }
-    public Guid? FlagDeckIdentifier { get; set; }
+    public int? FlagDeckIdentifier { get; set; }
     public List<SelectListItem>? FlagDecks { get; set; }
 }

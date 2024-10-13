@@ -12,9 +12,9 @@ namespace _2024_b1_individueel.Controllers;
 
 public class QuizController(GuessTheFlagDatabaseContext context) : Controller
 {
-    // this is, for some reason, required
+    [HttpGet]
     [Route("quiz/{identifier?}")]
-    public async Task<IActionResult> Index(Guid? identifier)
+    public async Task<IActionResult> Index(int? identifier)
     {
         if (identifier == null)
             return View("Index");

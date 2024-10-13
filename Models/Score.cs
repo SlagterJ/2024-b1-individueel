@@ -20,6 +20,11 @@ public class Score : Entity
     /// <summary>
     /// The flag deck on which this score was achieved.
     /// </summary>
+    public int? FlagDeckIdentifier { get; set; }
+
+    /// <summary>
+    /// The flag deck on which this score was achieved.
+    /// </summary>
     public FlagDeck? FlagDeck { get; set; }
 
     /// <summary>

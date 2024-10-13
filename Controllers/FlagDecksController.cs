@@ -18,7 +18,7 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     public async Task<IActionResult> Choose() => View(await context.FlagDeckSet.ToListAsync());
 
     // GET: FlagDecks/Details/5
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
             return NotFound();
@@ -42,7 +42,6 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     {
         if (ModelState.IsValid)
         {
-            flagDeck.Identifier = Guid.NewGuid();
             context.Add(flagDeck);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -52,7 +51,7 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     }
 
     // GET: FlagDecks/Edit/5
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
             return NotFound();
@@ -69,7 +68,7 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, [Bind("Name,Identifier")] FlagDeck flagDeck)
+    public async Task<IActionResult> Edit(int id, [Bind("Name,Identifier")] FlagDeck flagDeck)
     {
         if (id != flagDeck.Identifier)
             return NotFound();
@@ -94,7 +93,7 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     }
 
     // GET: FlagDecks/Delete/5
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
             return NotFound();
@@ -109,7 +108,7 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
     // POST: FlagDecks/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var flagDeck = await context.FlagDeckSet.FindAsync(id);
         if (flagDeck != null)
@@ -119,5 +118,5 @@ public class FlagDecksController(GuessTheFlagDatabaseContext context) : Controll
         return RedirectToAction(nameof(Index));
     }
 
-    private bool FlagDeckExists(Guid id) => context.FlagDeckSet.Any(e => e.Identifier == id);
+    private bool FlagDeckExists(int id) => context.FlagDeckSet.Any(e => e.Identifier == id);
 }

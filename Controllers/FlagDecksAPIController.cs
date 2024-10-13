@@ -21,7 +21,7 @@ public class FlagDecksAPIController(GuessTheFlagDatabaseContext context) : Contr
 
     // GET: api/FlagDecksAPI/5
     [HttpGet("{id}")]
-    public ActionResult<FlagDeck> GetFlagDeck(Guid id)
+    public ActionResult<FlagDeck> GetFlagDeck(int id)
     {
         var flagDeck = context
             .FlagDeckSet.Include((model) => model.Flags)
@@ -40,7 +40,7 @@ public class FlagDecksAPIController(GuessTheFlagDatabaseContext context) : Contr
     }
 
     [HttpPost("{identifier}")]
-    public ActionResult<Score> PostScore(Guid identifier, ScorePost scorePost)
+    public ActionResult<Score> PostScore(int identifier, ScorePost scorePost)
     {
         var flagDeck = context
             .FlagDeckSet.Include((model) => model.Flags)
@@ -62,5 +62,5 @@ public class FlagDecksAPIController(GuessTheFlagDatabaseContext context) : Contr
         return score;
     }
 
-    private bool FlagDeckExists(Guid id) => context.FlagDeckSet.Any(e => e.Identifier == id);
+    private bool FlagDeckExists(int id) => context.FlagDeckSet.Any(e => e.Identifier == id);
 }

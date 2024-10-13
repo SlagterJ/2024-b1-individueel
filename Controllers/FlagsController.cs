@@ -17,7 +17,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     public async Task<IActionResult> Index() => View(await context.FlagSet.ToListAsync());
 
     // GET: Flags/Details/5
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
             return NotFound();
@@ -69,7 +69,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
             {
                 CountryCode = flagCreateEditViewModel.CountryCode!,
                 CorrectAnswer = flagCreateEditViewModel.CorrectAnswer!,
-                Identifier = Guid.NewGuid(),
+                FlagDeckIdentifier = flagDeck.Identifier,
                 FlagDeck = flagDeck,
             };
             context.Add(flag);
@@ -81,7 +81,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Flags/Edit/5
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
             return NotFound();
@@ -99,7 +99,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
-        Guid id,
+        int id,
         [Bind("CountryCode,CorrectAnswers,Identifier")] Flag flag
     )
     {
@@ -126,7 +126,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Flags/Delete/5
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
             return NotFound();
@@ -141,7 +141,7 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
     // POST: Flags/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var flag = await context.FlagSet.FindAsync(id);
         if (flag != null)
@@ -151,5 +151,5 @@ public class FlagsController(GuessTheFlagDatabaseContext context) : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    private bool FlagExists(Guid id) => context.FlagSet.Any(e => e.Identifier == id);
+    private bool FlagExists(int id) => context.FlagSet.Any(e => e.Identifier == id);
 }

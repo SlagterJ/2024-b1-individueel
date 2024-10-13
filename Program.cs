@@ -13,6 +13,8 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<GuessTheFlagDatabaseContext>();
         builder.Services.AddRouting((options) => options.LowercaseUrls = true);
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
         // configure sessions
         builder.Services.AddSession(options =>
@@ -51,6 +53,15 @@ public class Program
         app.UseRouting();
 
         app.UseAuthorization();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(
+            (config) =>
+            {
+                config.SwaggerEndpoint("/swagger/v1/swagger.json", "Guess The Flag!");
+                config.RoutePrefix = "swagger";
+            }
+        );
 
         app.UseSession();
 

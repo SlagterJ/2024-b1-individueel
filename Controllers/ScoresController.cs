@@ -19,7 +19,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Scores/Details/5
-    public async Task<IActionResult> Details(Guid? id)
+    public async Task<IActionResult> Details(int? id)
     {
         if (id == null)
         {
@@ -52,7 +52,6 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     {
         if (ModelState.IsValid)
         {
-            score.Identifier = Guid.NewGuid();
             context.Add(score);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -61,7 +60,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Scores/Edit/5
-    public async Task<IActionResult> Edit(Guid? id)
+    public async Task<IActionResult> Edit(int? id)
     {
         if (id == null)
         {
@@ -82,7 +81,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
-        Guid id,
+        int id,
         [Bind("AchievedBy,AchievedScore,Identifier")] Score score
     )
     {
@@ -115,7 +114,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     }
 
     // GET: Scores/Delete/5
-    public async Task<IActionResult> Delete(Guid? id)
+    public async Task<IActionResult> Delete(int? id)
     {
         if (id == null)
         {
@@ -134,7 +133,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
     // POST: Scores/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(Guid id)
+    public async Task<IActionResult> DeleteConfirmed(int id)
     {
         var score = await context.ScoreSet.FindAsync(id);
         if (score != null)
@@ -146,7 +145,7 @@ public class ScoresController(GuessTheFlagDatabaseContext context) : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    private bool ScoreExists(Guid id)
+    private bool ScoreExists(int id)
     {
         return context.ScoreSet.Any(e => e.Identifier == id);
     }

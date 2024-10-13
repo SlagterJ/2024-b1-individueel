@@ -22,7 +22,12 @@ public class Flag : Entity
     /// <summary>
     /// The flagdeck to which this flag belongs.
     /// </summary>
-    public required FlagDeck FlagDeck { get; set; }
+    public required int FlagDeckIdentifier { get; set; }
+
+    /// <summary>
+    /// The flagdeck to which this flag belongs.
+    /// </summary>
+    public FlagDeck? FlagDeck { get; set; }
 
     /// <summary>
     /// The URL for the SVG file of this flag (from flagcdn.com).
