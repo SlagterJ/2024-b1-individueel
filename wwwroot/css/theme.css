@@ -1,0 +1,17 @@
+﻿.btn-primary {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.navbar {
+    background-color: #4CAF50 !important;
+}
+
+.navbar * {
+    color: white !important;
+}
+
+body {
+    font-size: 18px;
+    background-color: whitesmoke;
+}

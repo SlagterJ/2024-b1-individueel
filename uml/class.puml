@@ -6,7 +6,7 @@ abstract class Entity {
 
 class Flag {
   + string CountryCode
-  + List<string> CorrectAnswers
+  + string CorrectAnswer
 
   + bool IsCorrectAnswer()
 }
@@ -17,26 +17,18 @@ class FlagDeck {
   + FlagDeck Shuffle()
 }
 
-class User {
-  + string Firstname
-  + string Surname
+class Score {
+  + string AchievedBy
+  + int AchievedScore
+  + FlagDeck FlagDeck
 }
 
-class Pupil {
-  + List<string> Scores
-}
-
-class Tutor {
-  + List<string> Pupils
-}
 
 Entity <|-- Flag
 Entity <|-- FlagDeck
-Entity <|-- User
-User <|-- Pupil
-User <|-- Tutor
+Entity <|-- Score
 
 FlagDeck --> Flag : 1:n
-Tutor --> Pupil : 1:n
+FlagDeck --> Score : 1:n
 
 @enduml
